@@ -148,10 +148,14 @@ describe MtGox::Client do
       a_post("/api/0/getFunds.php").
         with(:body => test_body, :headers => test_headers).
         should have_been_made
-      balance.first.currency.should == "BTC"
-      balance.first.amount.should == 22.0
-      balance.last.currency.should == "USD"
-      balance.last.amount.should == 3.7
+      balance[0].currency.should == "BTC"
+      balance[0].amount.should == 22.0
+      balance[1].currency.should == "USD"
+      balance[1].amount.should == 3.7
+      balance[2].currency.should == "AUD"
+      balance[2].amount.should == 2.6
+      balance[3].currency.should == "EUR"
+      balance[3].amount.should == 5.1
     end
   end
 
@@ -305,10 +309,10 @@ describe MtGox::Client do
       a_post("/api/0/withdraw.php").
         with(:body => body, :headers => test_headers(body)).
         should have_been_made
-      withdraw.first.currency.should == "BTC"
-      withdraw.first.amount.should == 9.0
-      withdraw.last.currency.should == "USD"
-      withdraw.last.amount.should == 64.59
+      withdraw[0].currency.should == "BTC"
+      withdraw[0].amount.should == 9.0
+      withdraw[1].currency.should == "USD"
+      withdraw[1].amount.should == 64.59
     end
   end
 end
