@@ -242,6 +242,8 @@ module MtGox
       balances = []
       balances << Balance.new('BTC', balance['btcs'])
       balances << Balance.new('USD', balance['usds'])
+      balances << Balance.new('AUD', balance['auds'])
+      balances << Balance.new('EUR', balance['eurs'])
       balances
     end
 
